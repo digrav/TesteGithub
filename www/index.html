@@ -1,0 +1,314 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Daia Assistente</title>
+    </head>
+    <body style="position:relative;margin:0;padding:0;background-color:#f5f5f5;height:100%;font-family:Helvetica;">
+        <script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="fetch.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+		<div style="background: linear-gradient(#079C81, #13A1D6);top:0;height:40px;">
+		<div style="height:10px;">
+		</div>
+			<p style="text-shadow: 1px 2px 4px #000;height:100%;position:relative;margin-top:0px;text-align:center;color:#fff;">Assistente Daia V1</p>
+		</div>
+		<div id="vrau" style="overflow-y:scroll;float:left;position:relative;background-color:#f5f5f5;height:calc(100% - 130px);width:100%">
+			<div style="position:relative;float:left;width:100%;top:10px">
+				<div style="border: 1px solid #08ccc2;border-radius: 10px 10px;position:relative;margin-left:10px;max-width:calc(50% - 20px);background-color:dbfff4;word-wrap: break-word;">
+					<p style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);margin-top:0px;color:#000;">Olá eu sou Daia sua assistente virtual, o que deseja?</p>
+				</div>
+			</div>
+		</div>
+		<div style="margin-top:10px;position:relative;top:0;height:80px;float:left;width:100%">
+			<input onkeypress="return enterText(event)" id="pergunta" style="padding-left:10px;background-color:#fff;border: 1px solid #22C9D1;border-radius: 10px 10px;font-size:22px;position:relative;width:calc(100% - 170px);margin-left:15px;margin-top:15px;float:left"></input>
+			<button onclick='apagaText();' style="font-size:24px;border: 1px solid #22C9D1;border-radius: 10px 10px;position:relative;width:50px;float:left;margin-top:15px;height:35px;margin-left:15px">&#9003;</button>
+			<button onclick='voiceToText();' style="font-size:24px;border: 1px solid #22C9D1;border-radius: 10px 10px;position:relative;width:50px;float:left;margin-top:15px;height:35px;margin-left:15px">&#10003;</button>
+		</div>
+    </body>
+	
+	<script>
+	
+
+	</script>
+	
+	<script id="hidden-template" type="text/x-custom-template">
+			<div style="position:relative;float:left;width:100%;top:10px;">
+				<div style="text-align:left;border: 1px solid #12b2ed;border-radius: 10px 10px;float:right;position:relative;top:5px;max-width:calc(50% - 20px);background-color:#96e0f7;margin-right:10px;">
+					<p id="texto" style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);position:relative;margin-top:0px;color:#000;">Erro</p>
+				</div>
+			</div>
+			<div style="position:relative;float:left;width:100%;top:10px">
+				<div style="border: 1px solid #08ccc2;border-radius: 10px 10px;position:relative;margin-left:10px;max-width:calc(50% - 20px);background-color:dbfff4;">
+					<p id="textoResp" style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);margin-top:0px;color:#000;">Comando não reconhecido!</p>
+				</div>
+			</div>
+
+	</script>
+	
+<script>
+function apagaText()
+{  
+	document.getElementById('pergunta').value = "";
+}
+var ouvindo=false;
+var intCount=0;
+var resp = "";
+var textos;
+var produtoAtivo="";
+var resps=[];
+var pergs=[];
+var dados_1=[];
+var resps_1=[];
+var pergs_1=[];
+	
+
+
+
+function enterText(e) {
+    if (e.keyCode == 13) {
+        var tb = document.getElementById("pergunta");
+        addText('4455AA');
+        return false;
+    }
+}
+	
+
+$(function() 
+{
+	fetch('http://13.59.121.68/Teste/getFile.php?tipo=daiaVbD1.txt').then(function(response)
+	{
+		return response.text();
+	}).then(function(myBlob) 
+	{
+		this.resp = myBlob;
+		console.log(this.resp);
+		this.dados_1 = resp.split(/\r?\n/);
+		//myImage.src = objectURL;
+	});
+});
+$(function()
+{
+	fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) 
+	{
+		return response.text();
+	}).then(function(myBlob) 
+	{
+		this.resp = myBlob;
+		console.log(this.resp);
+		this.textos = resp.split(/\r?\n/);
+		var fLen = this.textos.length;
+		console.log(fLen);
+		for (i = 0; i < fLen; i++)
+		{
+			if (!(textos[i].startsWith("--")))
+			{
+				var temp = this.textos[i].split("|");
+				this.pergs_1.push(temp[0]);
+				for (troca_linha = 0; troca_linha < this.dados_1.length; troca_linha++)
+				{
+					var temp_string = this.dados_1[troca_linha].split(":");
+					temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+				}
+				this.resps_1.push(temp[1]);
+			}
+		}
+		//myImage.src = objectURL;
+	});
+});
+
+	function addText(vindo)
+	{
+		perguntaTexto="aa";
+		if(vindo=="4455AA")
+		{
+			perguntaTexto = $('#pergunta').val();
+		}
+		else
+		{
+			perguntaTexto=vindo;
+		}
+		console.log(this.resps.length);
+		console.log(this.resps);
+		
+		var achou=0;
+		var compr=this.resps.length;
+		if(perguntaTexto.toLowerCase()=="Help".toLowerCase())
+		{
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("A lista de produtos disponiveis é [Produto : Chamada]: <br> sdfsdf");
+			intCount=intCount+1;
+			this.pergs=this.pergs_1;
+			this.resps=this.resps_1;
+			achou=1;
+		}
+		else if(produtoAtivo!="")
+		{
+			if(perguntaTexto.toLowerCase()=="Produto Tylenol".toLowerCase())
+			{
+				produtoAtivo="Tylenol";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Tylenol como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_1;
+				this.resps=this.resps_1;
+				achou=1;
+			}
+
+			if(achou!=1)
+			{
+				for (i = 0; i < compr; i++) 
+				{
+					if(this.pergs[i].toLowerCase()==perguntaTexto.toLowerCase())
+					{
+							var template = $('#hidden-template').html();
+							$('#vrau').append(template);
+							$('#texto').attr("id","textoPerg"+intCount);
+							$('#textoPerg'+intCount).text(this.pergs[i]+" ");
+							$('#textoResp').attr("id","textoResp"+intCount);
+							$('#textoResp'+intCount).text(this.resps[i]);
+							$('#textoResp'+intCount).text(this.resps[i]+" ");
+							playVibrate(this.resps[i]);
+							intCount=intCount+1;
+							achou=1;
+					}
+				}
+			}
+			if(achou==0)
+			{
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Comando não encontrado");
+				playVibrate("Comando não encontrado");
+				intCount=intCount+1;
+			}
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Tylenol".toLowerCase())
+		{
+			produtoAtivo="Tylenol";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Tylenol como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_1;
+			this.resps=this.resps_1;
+		}
+
+		
+		else
+		{
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("É necesário selecionar um produto. Tente Produto + nome do produto");
+			intCount=intCount+1;
+		}
+		var objDiv = document.getElementById("vrau");
+		objDiv.scrollTop = objDiv.scrollHeight;
+		//$("#vrau").animate({ scrollTop: $("#vrau").height()});
+	}
+	function voiceToText()
+	{
+		if(ouvindo==false)
+		{
+		ouvindo=true;
+		 document.addEventListener("deviceready", function() {
+
+		 
+		 function startRecognition(){
+		window.plugins.speechRecognition.startListening(function(result){
+			// Show results in the console
+			//alert("1"+result);
+			//for(var countForTexto)
+			//
+				
+			//}
+			//alert(result[0]);
+			addText(result[0]);
+			ouvindo=false;
+			//console.log("1"+result);
+			
+		}, function(err){
+			//alert("2"+err);
+			//console.log("2"+err);
+		}, {
+			language: "pt-BR",
+			showPopup: true
+		});
+	}
+
+	// Verify if recognition is available
+	window.plugins.speechRecognition.isRecognitionAvailable(function(available){
+		if(!available){
+			alert("Sistema de Voz indisponivel nesse celular");
+			//console.log("Indisponibru");
+		}
+
+		// Check if has permission to use the microphone
+		window.plugins.speechRecognition.hasPermission(function (isGranted){
+			if(isGranted){
+			//alert("OOOO");
+			//console.log("000000");
+				startRecognition();
+			}else{
+				// Request the permission
+				window.plugins.speechRecognition.requestPermission(function (){
+					// Request accepted, start recognition
+					//alert("OOOO");
+					//console.log("000000");
+					//startRecognition();
+				}, function (err){
+					//alert("3"+err);
+					//console.log("3"+err);
+				});
+			}
+		}, function(err){
+			//alert("4"+err);
+			//console.log("4"+err);
+		});
+	}, function(err){
+		//alert("5"+err);
+		//console.log("5"+err);
+	});
+		 
+		 
+		 
+		 
+		 
+	}, false);
+		}
+	}
+	 function playVibrate(textoVozFala) {
+    var u = new SpeechSynthesisUtterance();
+    u.text = textoVozFala;
+    u.lang = 'pt-BR';
+	u.volume=1;
+    speechSynthesis.speak(u);      
+  }
+	function playIntro(textoVozFala)
+	{
+		var u = new SpeechSynthesisUtterance();
+		u.text = textoVozFala;
+		u.lang = 'pt-BR';
+		u.volume=1;
+		speechSynthesis.speak(u);      
+	}
+	playIntro("Olá eu sou Daia sua assistente virtual, o que deseja?");
+	</script>
+</html>

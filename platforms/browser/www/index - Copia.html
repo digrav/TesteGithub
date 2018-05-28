@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Blank App</title>
+    </head>
+    <body style="position:relative;margin:0;padding:0;background-color:#f5f5f5;height:100%;font-family:Helvetica;">
+        <script type="text/javascript" src="cordova.js"></script>
+		<div style="background: linear-gradient(#079C81, #13A1D6);top:0;height:40px;">
+		<div style="height:10px;">
+		</div>
+			<p style="text-shadow: 1px 2px 4px #000;height:100%;position:relative;margin-top:0px;text-align:center;color:#fff;">Assistente Daia</p>
+		</div>
+		<div id="vrau" style="overflow-y:scroll;float:left;position:relative;background-color:#f5f5f5;height:calc(100% - 130px);width:100%">
+			<div style="position:relative;float:left;width:100%;top:10px">
+				<div style="border: 1px solid #08ccc2;border-radius: 10px 10px;position:relative;margin-left:10px;max-width:calc(50% - 20px);background-color:dbfff4;word-wrap: break-word;">
+					<p style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);margin-top:0px;color:#000;">Olá eu sou Daia sua assistente virtual, o que deseja?</p>
+				</div>
+			</div>
+			<div style="position:relative;float:left;width:100%;top:10px;">
+				<div style="border: 1px solid #12b2ed;border-radius: 10px 10px;float:right;position:relative;top:5px;max-width:calc(50% - 20px);background-color:#96e0f7;word-wrap: break-word;margin-right:10px;">
+					<p style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);position:relative;margin-top:0px;color:#000;">Assistentgsdfgsdfgsdfgkjasdifh asjdfhailsdfh alksdfhklasdhfklasdhflkasdhfklashdlkfhaskldfhalksdfhlkasdfhklasdhflkasdhfklahsdlkfhasdklfhaklsdfhalksdfhklasdfhlkasdhfklasdfe Daia</p>
+				</div>
+			</div>
+		</div>
+		<div style="margin-top:10px;position:relative;top:0;height:80px;float:left;width:100%">
+			<input id="pergunta" style="padding-left:10px;background-color:#fff;border: 1px solid #22C9D1;border-radius: 10px 10px;font-size:22px;position:relative;width:calc(100% - 110px);margin-left:15px;margin-top:15px;float:left"></input>
+			<button onclick='addText();' style="font-size:24px;border: 1px solid #22C9D1;border-radius: 10px 10px;position:relative;width:50px;float:left;margin-top:15px;height:35px;margin-left:15px">&#127908;</button>
+		</div>
+    </body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+
+	</script>
+	
+	<script id="hidden-template" type="text/x-custom-template">
+			<div style="position:relative;float:left;width:100%;top:10px;">
+				<div style="text-align:left;border: 1px solid #12b2ed;border-radius: 10px 10px;float:right;position:relative;top:5px;max-width:calc(50% - 20px);background-color:#96e0f7;word-wrap: break-word;margin-right:10px;">
+					<p id="texto" style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);position:relative;margin-top:0px;color:#000;">Assistentgsdfgsdfgsdfgkjasdifh asjdfhailsdfh alksdfhklasdhfklasdhflkasdhfklashdlkfhaskldfhalksdfhlkasdfhklasdhflkasdhfklahsdlkfhasdklfhaklsdfhalksdfhklasdfhlkasdhfklasdfe Daia</p>
+				</div>
+			</div>
+			<div style="position:relative;float:left;width:100%;top:10px">
+				<div style="border: 1px solid #08ccc2;border-radius: 10px 10px;position:relative;margin-left:10px;max-width:calc(50% - 20px);background-color:dbfff4;word-wrap: break-word;">
+					<p id="textoResp" style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);margin-top:0px;color:#000;">Comando não reconhecido!</p>
+				</div>
+			</div>
+
+	</script>
+	
+	<script>
+	var intCount=0;
+	var resp = "";
+	var textos;
+	var produtoAtivo="";
+	var resps=[];
+	var pergs=[];
+	$(function() {
+    		fetch('daiaT.dai').then(function(response) {
+		  return response.text();
+		})
+		.then(function(myBlob) {
+		  this.resp = myBlob;
+		  console.log(this.resp);
+		  this.textos = resp.split(/\r?\n/);
+		  		var fLen = this.textos.length;
+		console.log(fLen);
+		for (i = 0; i < fLen; i++) 
+		{
+			if(!(textos[i].startsWith("--")))
+			{
+				var temp = this.textos[i].split("|");
+				this.pergs.push(temp[0]);
+				this.resps.push(temp[1]);
+			}
+		}
+		  //myImage.src = objectURL;
+		});
+
+	});
+	function addText()
+	{
+		console.log(this.resps.length);
+		console.log(this.resps);
+		var perguntaTexto = $('#pergunta').val();
+		var achou=0;
+		var compr=this.resps.length;
+		for (i = 0; i < compr; i++) 
+		{
+			if(this.pergs[i]==perguntaTexto)
+			{
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(this.pergs[i]);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text(this.resps[i]);
+				intCount=intCount+1;
+				achou=1;
+			}
+		}
+
+		var objDiv = document.getElementById("vrau");
+		objDiv.scrollTop = objDiv.scrollHeight;
+		//$("#vrau").animate({ scrollTop: $("#vrau").height()});
+	}
+	</script>
+</html>

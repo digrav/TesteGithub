@@ -1,0 +1,37 @@
+redes_RC:2
+lojas_redes_RC:0
+detalhes_RC_rede:Remedio Popular Farma Ponte, Farma Ponte
+assoc_RC:1
+lojas_assoc_RC:0
+detalhes_RC_assoc:ForteFarma
+produto_A:Banho a Banho Roll on 55
+redes_SC:0
+lojas_redes_SC:0
+assoc_SC:0
+lojas_assoc_SC:0
+novos_cli_hor_total:428
+perde_cli_hor_total:426
+manteve_cli_hor_total:835
+hor_cli_ante_total:1261
+hor_cli_atu_total:1263
+hor_cli_aument_total:0.001
+novos_cli_hor_rede:17
+perde_cli_hor_rede:4
+manteve_cli_hor_rede:210
+hor_cli_ante_rede:214
+hor_cli_atu_rede:227
+hor_cli_aument_rede:6
+novos_cli_hor_assoc:18
+perde_cli_hor_assoc:25
+manteve_cli_hor_assoc:15
+hor_cli_ante_assoc:40
+hor_cli_atu_assoc:33
+hor_cli_aument_assoc:-17,5
+novos_cli_hor_dist:436
+perde_cli_hor_dist:832
+manteve_cli_hor_dist:436
+hor_cli_ante_dist:1268
+hor_cli_atu_dist:1268
+hor_cli_aument_dist:0
+ruptura_real_cli:101
+ruptura_real_vendas:1801

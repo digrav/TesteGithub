@@ -1,0 +1,140 @@
+﻿-- format
+-- [text to recognize] | [text to display or execute] | [is text a command?]
+-- simple text --
+Reativar Cadastro|Por favor indique o tipo de cadastro que deseja ver (Reativar Cadastro Redes ou Reativar Cadastro Associativistas). |false
+Sem Cadastro|Por favor indique o tipo de cadastro que deseja ver (Sem Cadastro Redes ou Sem Cadastro Associativistas). |false
+Reativar Cadastro Redes|Foram detectadas ☻redes_RC☻ redes sem registro de vendas nos últimos 6 meses sem vendas do ☻produto_A☻, isso pode representar um problema de cadastro. Para saber quais redes experimente Reativar Cadastro Redes Detalhes|false
+Reativar Cadastro Redes Detalhes|Aqui estão as redes identificadas: ☻detalhes_RC_rede☻|false
+Sem Cadastro Redes|Foram detectadas ☻redes_SC☻ redes sem registro no histórico de demanda do ☻produto_A☻, isso pode representar um problema de cadastro. |false
+Reativar Cadastro Associativistas|Foram detectadas ☻assoc_RC☻ associativistas sem registro de vendas nos últimos 6 meses sem vendas do ☻produto_A☻, isso pode representar um problema de cadastro. |false
+Sem Cadastro Associativistas|Foram detectadas ☻assoc_SC☻ associativistas sem registro no histórico de demanda do ☻produto_A☻, isso pode representar um problema de cadastro. |false
+-- Substituição|Comparando a prescrição com a demanda do Produto A e do concorrente, os dados sugerem estar ocorrendo troca entre os produtos.|false
+Horizontalização|Na horizontalização total foi identificado entre os clientes atendidos pelos distribuidores analisados, que dentro dos últimos seis meses (Comparativo dos últimos 3 meses contra os 3 primeiros meses), uma inclusão de ☻novos_cli_hor_total☻ clientes novos e a perda de ☻perde_cli_hor_total☻ clientes no período (passando de ☻hor_cli_ante_total☻ clientes para ☻hor_cli_atu_total☻ clientes). O percentual de acréscimo entre o primeiro período e o segundo foi de ☻hor_cli_aument_total☻%. Para dados mais especificos tente: Horizontalização Redes, Horizontalização Associativistas ou Horizontalização Distribuidores. |false
+Horizontalização Redes|Foi identificado entre os clientes atendidos pelos distribuidores analisados, que dentro dos últimos seis meses (Comparativo dos últimos 3 meses contra os 3 primeiros meses), uma inclusão de ☻novos_cli_hor_rede☻ clientes novos e a perda de ☻perde_cli_hor_rede☻ clientes no período (passando de ☻hor_cli_ante_rede☻ clientes para ☻hor_cli_atu_rede☻ clientes). O percentual de acréscimo entre o primeiro período e o segundo foi de ☻hor_cli_aument_rede☻%. |false
+Horizontalização Associativistas|Foi identificado entre os clientes atendidos pelos distribuidores analisados, que dentro dos últimos seis meses (Comparativo dos últimos 3 meses contra os 3 primeiros meses), uma inclusão de ☻novos_cli_hor_assoc☻ clientes novos e a perda de ☻perde_cli_hor_assoc☻ clientes no período (passando de ☻hor_cli_ante_assoc☻ clientes para ☻hor_cli_atu_assoc☻ clientes). O percentual de acréscimo entre o primeiro período e o segundo foi de ☻hor_cli_aument_assoc☻%.  |false
+Horizontalização Distribuidores|Foi identificado entre os clientes atendidos pelos distribuidores analisados, que dentro dos últimos seis meses (Comparativo dos últimos 3 meses contra os 3 primeiros meses), uma inclusão de ☻novos_cli_hor_dist☻ clientes novos e a perda de ☻perde_cli_hor_dist☻ clientes no período (passando de ☻hor_cli_ante_dist☻ clientes para ☻hor_cli_atu_dist☻ clientes). O percentual de acréscimo entre o primeiro período e o segundo foi de ☻hor_cli_aument_dist☻%. |false
+Ruptura Real|Queda de demanda fora do padrão que sugere falta de produto em aproximadamente ☻ruptura_real_cli☻ clientes, ocasionando uma perda de vendas de ☻ruptura_real_vendas☻ unidades no mês atual.|false
+Ruptura|Queda de demanda fora do padrão que sugere falta de produto em aproximadamente ☻ruptura_real_cli☻ clientes, ocasionando uma perda de vendas de ☻ruptura_real_vendas☻ unidades no mês atual.|false
+-- Provável|Projetando o giro do produto com os dados da ultima venda, existe a possibilidade de ruptura em 5.239 clientes nos próximos 3 dias.|false
+-- Largura e profundidade|Há ocorrências de problemas em relação à largura, profundidade e prescrição, qual deseja ouvir primeiro?|false
+-- Largura|Foi identificado que uma diminuição de médicos prescritores do Produto A enquanto os concorrentes se mantiveram estável.|false
+-- Profundidade|Identificamos que no último mês de análise, apesar de ter ocorrido um aumento de 4% sobre as prescrições do Produto A em relação ao período anterior, a participação em relação aos concorrentes selecionados, teve uma queda de 8%.|false
+-- Prescrição|Foram identificadas quedas no share de prescrições do Produto A em 91 micro regiões em relação ao mês passado, em sua maioria da especialidade Z. Neste mesmo período, houve um acréscimo de 29 médicos receitando o produto A e um decréscimo de 111 prescrições do produto.|false
+-- Força de Vendas|3 setores não atingiram as metas de demanda. Em 1 setor a demanda não atingida ocorreu em Bricks onde a rede H está presente. Em 2 setores, ocorreu queda de prescrição de 8 médicos.|false
+-- Território|2 setores não atingiram a meta de demanda. Motivos: (Abrir opções das telas anteriores)|false
+-- Cidade|46 cidades não atingiram as metas de demanda. 22 são cidades visitadas, 12 atendidas por distribuidores e 12 não visitas / não atendidas.|false
+-- Cliente|5 redes e 1 rede associativista tiveram uma demanda fora do padrão. Motivos: (Abrir opções das telas anteriores)|false
+-- Especialidade|Z teve uma queda de receitas / médico. Motivos: (Abrir opções das telas anteriores)|false
+-- Crescimento|MAT - Mercado teve um crescimento de 8% em Unidades e 9% em R$ no. O Produto A obteve 4% em Unidades e 3% em R$.Mês - Mercado teve um crescimento de 7,8% em Unidades e 9,1% em R$ no. O Produto A obteve 5% em Unidades e 5,3% em R$.|false
+-- Market Share|MAT - O Produto A obteve 2,2% em Unidades e 3,1% em R$. Um ganho de 0,1% em Unidades e 0,2% em R$Mês - O Produto A obteve 2,1% em Unidades e 3,0% em R$. Um ganho de 0,2% em Unidades |false
+-- Estoque|O estoque do Produto A ficou em 45 dias. Atenção ao distribuidor Z que fechou com 54 dias.|false
+-- Desconto|O produto A aumentou o desconto de 42% para 45%, em contramão dos que diminuíram o desconto de 43% para 40%.|false
+-- Mix|O produto A teve um crescimento de 9% em reais no MAT, dividido em 3% de aumento de preço, 1% em unidades e 5% por Mix de SKUs com preço médio maior.|false
+Distribuição Numérica|Experimente: Distribuição Numérica MAT, Distribuição Numérica TRI, Distribuição Numérica YTD|false
+Distribuição Ponderada|Experimente: Distribuição Ponderada MAT, Distribuição Ponderada TRI, Distribuição Ponderada YTD|false
+Oportunidade Total|Experimente Oportunidade Total MAT, Oportunidade Total TRI, Oportunidade Total YTD|false
+Distribuição Numérica MAT|O percentual de farmácias com presença do ☻produto_A☻ é de ☻distribuicao_num_MAT☻%.|false
+Distribuição Ponderada MAT|O percentual de farmácias ponderadas pelo mercado montado com presença do ☻produto_A☻ é de ☻distribuicao_pond_MAT☻%.|false
+Oportunidade Total MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT☻ Reais.|false
+Distribuição Numérica TRI|O percentual de farmácias com presença do ☻produto_A☻ é de ☻distribuicao_num_TRI☻%.|false
+Distribuição Ponderada TRI|O percentual de farmácias ponderadas pelo mercado montado com presença do ☻produto_A☻ é de ☻distribuicao_pond_TRI☻%.|false
+Oportunidade Total TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI☻ Reais.|false
+Distribuição Numérica YTD|O percentual de farmácias com presença do ☻produto_A☻ é de ☻distribuicao_num_YTD☻%.|false
+Distribuição Ponderada YTD|O percentual de farmácias ponderadas pelo mercado montado com presença do ☻produto_A☻ é de ☻distribuicao_pond_YTD☻%.|false
+Oportunidade Total YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD☻ Reais.|false
+Oportunidade Acre MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_AC☻ Reais.|false
+Oportunidade Acre TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_AC☻ Reais.|false
+Oportunidade Acre YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_AC☻ Reais.|false
+Oportunidade Alagoas MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_AL☻ Reais.|false
+Oportunidade Alagoas TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_AL☻ Reais.|false
+Oportunidade Alagoas YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_AL☻ Reais.|false
+Oportunidade Amazonas MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_AM☻ Reais.|false
+Oportunidade Amazonas TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_AM☻ Reais.|false
+Oportunidade Amazonas YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_AM☻ Reais.|false
+Oportunidade Amapá MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_AP☻ Reais.|false
+Oportunidade Amapá TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_AP☻ Reais.|false
+Oportunidade Amapá YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_AP☻ Reais.|false
+Oportunidade Bahia MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_BA☻ Reais.|false
+Oportunidade Bahia TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_BA☻ Reais.|false
+Oportunidade Bahia YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_BA☻ Reais.|false
+Oportunidade Ceará MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_CE☻ Reais.|false
+Oportunidade Ceará TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_CE☻ Reais.|false
+Oportunidade Ceará YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_CE☻ Reais.|false
+Oportunidade Distrito Federal MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_DF☻ Reais.|false
+Oportunidade Distrito Federal TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_DF☻ Reais.|false
+Oportunidade Distrito Federal YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_DF☻ Reais.|false
+Oportunidade Espirito Santo MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_ES☻ Reais.|false
+Oportunidade Espirito Santo TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_ES☻ Reais.|false
+Oportunidade Espirito Santo YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_ES☻ Reais.|false
+Oportunidade Goiás MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_GO☻ Reais.|false
+Oportunidade Goiás TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_GO☻ Reais.|false
+Oportunidade Goiás YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_GO☻ Reais.|false
+Oportunidade Maranhão MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_MA☻ Reais.|false
+Oportunidade Maranhão TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_MA☻ Reais.|false
+Oportunidade Maranhão YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_MA☻ Reais.|false
+Oportunidade Minas Gerais MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_MG☻ Reais.|false
+Oportunidade Minas Gerais TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_MG☻ Reais.|false
+Oportunidade Minas Gerais YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_MG☻ Reais.|false
+Oportunidade Mato Grosso do Sul MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_MS☻ Reais.|false
+Oportunidade Mato Grosso do Sul TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_MS☻ Reais.|false
+Oportunidade Mato Grosso do Sul YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD☻_MS Reais.|false
+Oportunidade Mato Grosso MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_MT☻ Reais.|false
+Oportunidade Mato Grosso TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_MT☻ Reais.|false
+Oportunidade Mato Grosso YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_MT☻ Reais.|false
+Oportunidade Pará MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_PA☻ Reais.|false
+Oportunidade Pará TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_PA☻ Reais.|false
+Oportunidade Pará YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_PA☻ Reais.|false
+Oportunidade Paraíba MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_PB☻ Reais.|false
+Oportunidade Paraíba TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_PB☻ Reais.|false
+Oportunidade Paraíba YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_PB☻ Reais.|false
+Oportunidade Pernambuco MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_PE☻ Reais.|false
+Oportunidade Pernambuco TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_PE☻ Reais.|false
+Oportunidade Pernambuco YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_PE☻ Reais.|false
+Oportunidade Piauí MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_PI☻ Reais.|false
+Oportunidade Piauí TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_PI☻ Reais.|false
+Oportunidade Piauí YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_PI☻ Reais.|false
+Oportunidade Paraná MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_PR☻ Reais.|false
+Oportunidade Paraná TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_PR☻ Reais.|false
+Oportunidade Paraná YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_PR☻ Reais.|false
+Oportunidade Rio de Janeiro MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_RJ☻ Reais.|false
+Oportunidade Rio de Janeiro TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_RJ☻ Reais.|false
+Oportunidade Rio de Janeiro YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_RJ☻ Reais.|false
+Oportunidade Rio Grande do Norte MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_RN☻ Reais.|false
+Oportunidade Rio Grande do Norte TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_RN☻ Reais.|false
+Oportunidade Rio Grande do Norte YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_RN☻ Reais.|false
+Oportunidade Rondônia MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_RO☻ Reais.|false
+Oportunidade Rondônia TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_RO☻ Reais.|false
+Oportunidade Rondônia YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_RO☻ Reais.|false
+Oportunidade Roraima MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_RR☻ Reais.|false
+Oportunidade Roraima TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_RR☻ Reais.|false
+Oportunidade Roraima YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_RR☻ Reais.|false
+Oportunidade Rio Grande do Sul MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_RS☻ Reais.|false
+Oportunidade Rio Grande do Sul TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_RS☻ Reais.|false
+Oportunidade Rio Grande do Sul YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_RS☻ Reais.|false
+Oportunidade Santa Catarina MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_SC☻ Reais.|false
+Oportunidade Santa Catarina TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_SC☻ Reais.|false
+Oportunidade Santa Catarina YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_SC☻ Reais.|false
+Oportunidade Sergipe MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_SE☻ Reais.|false
+Oportunidade Sergipe TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_SE☻ Reais.|false
+Oportunidade Sergipe YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_SE☻ Reais.|false
+Oportunidade São Paulo MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_SP☻ Reais.|false
+Oportunidade São Paulo TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_SP☻ Reais.|false
+Oportunidade São Paulo YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_SP☻ Reais.|false
+Oportunidade Tocantins MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_TO☻ Reais.|false
+Oportunidade Tocantins TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_TO☻ Reais.|false
+Oportunidade Tocantins YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_TO☻ Reais.|false
+Oportunidade Jorge MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_Jorge☻ Reais.|false
+Oportunidade Jorge TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_Jorge☻ Reais.|false
+Oportunidade Jorge YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_Jorge☻ Reais.|false
+Oportunidade Manoel MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_Manoel☻ Reais.|false
+Oportunidade Manoel TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_Manoel☻ Reais.|false
+Oportunidade Manoel YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_Manoel☻ Reais.|false
+Oportunidade Marisa MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_Marisa☻ Reais.|false
+Oportunidade Marisa TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_Marisa☻ Reais.|false
+Oportunidade Marisa YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_Marisa☻ Reais.|false
+Oportunidade Renata MAT|A oportunidade do ☻produto_A☻ é de ☻oportunidade_MAT_Renata☻ Reais.|false
+Oportunidade Renata TRI|A oportunidade do ☻produto_A☻ é de ☻oportunidade_TRI_Renata☻ Reais.|false
+Oportunidade Renata YTD|A oportunidade do ☻produto_A☻ é de ☻oportunidade_YTD_Renata☻ Reais.|false
+-- commands --
+Produto Caladryl|Você definiu Caladryl como produto ativo|true
+Produto Banho a Banho|Você definiu Banho a Banho como produto ativo|true

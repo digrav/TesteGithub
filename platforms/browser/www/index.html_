@@ -1,0 +1,1509 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Daia Assistente</title>
+    </head>
+    <body style="position:relative;margin:0;padding:0;background-color:#f5f5f5;height:100%;font-family:Helvetica;">
+        <script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="fetch.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+		<div style="background: linear-gradient(#079C81, #13A1D6);top:0;height:40px;">
+		<div style="height:10px;">
+		</div>
+			<p style="text-shadow: 1px 2px 4px #000;height:100%;position:relative;margin-top:0px;text-align:center;color:#fff;">Assistente Daia V0.5</p>
+		</div>
+		<div id="vrau" style="overflow-y:scroll;float:left;position:relative;background-color:#f5f5f5;height:calc(100% - 130px);width:100%">
+			<div style="position:relative;float:left;width:100%;top:10px">
+				<div style="border: 1px solid #08ccc2;border-radius: 10px 10px;position:relative;margin-left:10px;max-width:calc(50% - 20px);background-color:dbfff4;word-wrap: break-word;">
+					<p style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);margin-top:0px;color:#000;">Olá eu sou Daia sua assistente virtual, o que deseja?</p>
+				</div>
+			</div>
+		</div>
+		<div style="margin-top:10px;position:relative;top:0;height:80px;float:left;width:100%">
+			<input onkeypress="return enterText(event)" id="pergunta" style="padding-left:10px;background-color:#fff;border: 1px solid #22C9D1;border-radius: 10px 10px;font-size:22px;position:relative;width:calc(100% - 110px);margin-left:15px;margin-top:15px;float:left"></input>
+			<button onclick='voiceToText();' style="font-size:24px;border: 1px solid #22C9D1;border-radius: 10px 10px;position:relative;width:50px;float:left;margin-top:15px;height:35px;margin-left:15px">&#10003;</button>
+		</div>
+    </body>
+	
+	<script>
+	
+
+	</script>
+	
+	<script id="hidden-template" type="text/x-custom-template">
+			<div style="position:relative;float:left;width:100%;top:10px;">
+				<div style="text-align:left;border: 1px solid #12b2ed;border-radius: 10px 10px;float:right;position:relative;top:5px;max-width:calc(50% - 20px);background-color:#96e0f7;margin-right:10px;">
+					<p id="texto" style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);position:relative;margin-top:0px;color:#000;">Assistentgsdfgsdfgsdfgkjasdifh asjdfhailsdfh alksdfhklasdhfklasdhflkasdhfklashdlkfhaskldfhalksdfhlkasdfhklasdhflkasdhfklahsdlkfhasdklfhaklsdfhalksdfhklasdfhlkasdhfklasdfe Daia</p>
+				</div>
+			</div>
+			<div style="position:relative;float:left;width:100%;top:10px">
+				<div style="border: 1px solid #08ccc2;border-radius: 10px 10px;position:relative;margin-left:10px;max-width:calc(50% - 20px);background-color:dbfff4;">
+					<p id="textoResp" style="padding-top:7px;margin-bottom:10px;padding-left:10px;width:calc(100% - 12px);margin-top:0px;color:#000;">Comando não reconhecido!</p>
+				</div>
+			</div>
+
+	</script>
+	
+<script>
+	var ouvindo=false;
+	var intCount=0;
+	var resp = "";
+	var textos;
+	var produtoAtivo="";
+	var resps=[];
+	var pergs=[];
+	var dados_1=[];
+	var resps_1=[];
+	var pergs_1=[];
+	var resps_2=[];
+	var pergs_2=[];
+	var dados_3=[];
+var resps_3 =[];
+var pergs_3 =[];
+var dados_4=[];
+var resps_4 =[];
+var pergs_4 =[];
+var dados_5=[];
+var resps_5 =[];
+var pergs_5 =[];
+var dados_6=[];
+var resps_6 =[];
+var pergs_6 =[];
+var dados_7=[];
+var resps_7 =[];
+var pergs_7 =[];
+var dados_8=[];
+var resps_8 =[];
+var pergs_8 =[];
+var dados_9=[];
+var resps_9 =[];
+var pergs_9 =[];
+var dados_10=[];
+var resps_10 =[];
+var pergs_10 =[];
+var dados_11=[];
+var resps_11 =[];
+var pergs_11 =[];
+var dados_12=[];
+var resps_12 =[];
+var pergs_12 =[];
+var dados_13=[];
+var resps_13 =[];
+var pergs_13 =[];
+var dados_14=[];
+var resps_14 =[];
+var pergs_14 =[];
+var dados_15=[];
+var resps_15 =[];
+var pergs_15 =[];
+var dados_16=[];
+var resps_16 =[];
+var pergs_16 =[];
+var dados_17=[];
+var resps_17 =[];
+var pergs_17 =[];
+var dados_18=[];
+var resps_18 =[];
+var pergs_18 =[];
+var dados_19=[];
+var resps_19 =[];
+var pergs_19 =[];
+var dados_20=[];
+var resps_20 =[];
+var pergs_20 =[];
+
+function enterText(e) {
+    if (e.keyCode == 13) {
+        var tb = document.getElementById("pergunta");
+        addText('4455AA');
+        return false;
+    }
+}
+	
+	$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD1.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_1 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});
+$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_1.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_1.length; troca_linha++)
+{
+var temp_string = this.dados_1[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_1.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});
+$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD2.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_2 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_2.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_2.length; troca_linha++)
+{
+var temp_string = this.dados_2[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_2.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD3.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_3 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_3.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_3.length; troca_linha++)
+{
+var temp_string = this.dados_3[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_3.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD4.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_4 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_4.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_4.length; troca_linha++)
+{
+var temp_string = this.dados_4[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_4.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD5.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_5 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_5.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_5.length; troca_linha++)
+{
+var temp_string = this.dados_5[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_5.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD6.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_6 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_6.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_6.length; troca_linha++)
+{
+var temp_string = this.dados_6[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_6.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD7.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_7 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_7.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_7.length; troca_linha++)
+{
+var temp_string = this.dados_7[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_7.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD8.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_8 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_8.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_8.length; troca_linha++)
+{
+var temp_string = this.dados_8[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_8.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD9.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_9 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_9.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_9.length; troca_linha++)
+{
+var temp_string = this.dados_9[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_9.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD10.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_10 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_10.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_10.length; troca_linha++)
+{
+var temp_string = this.dados_10[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_10.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD11.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_11 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_11.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_11.length; troca_linha++)
+{
+var temp_string = this.dados_11[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_11.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD12.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_12 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_12.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_12.length; troca_linha++)
+{
+var temp_string = this.dados_12[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_12.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD13.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_13 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_13.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_13.length; troca_linha++)
+{
+var temp_string = this.dados_13[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_13.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD14.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_14 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_14.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_14.length; troca_linha++)
+{
+var temp_string = this.dados_14[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_14.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD15.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_15 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_15.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_15.length; troca_linha++)
+{
+var temp_string = this.dados_15[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_15.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD16.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_16 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_16.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_16.length; troca_linha++)
+{
+var temp_string = this.dados_16[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_16.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD17.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_17 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_17.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_17.length; troca_linha++)
+{
+var temp_string = this.dados_17[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_17.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD18.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_18 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_18.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_18.length; troca_linha++)
+{
+var temp_string = this.dados_18[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_18.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD19.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_19 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_19.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_19.length; troca_linha++)
+{
+var temp_string = this.dados_19[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_19.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});$(function() {
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaVbD20.txt').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.dados_20 = resp.split(/\r?\n/);
+//myImage.src = objectURL;
+});
+});$(function()
+{
+fetch('http://13.59.121.68/Cellera/getFile.php?tipo=daiaT.dai').then(function(response) {
+return response.text();
+})
+.then(function(myBlob) {
+this.resp = myBlob;
+console.log(this.resp);
+this.textos = resp.split(/\r?\n/);
+var fLen = this.textos.length;
+console.log(fLen);
+for (i = 0; i < fLen; i++){
+if (!(textos[i].startsWith("--")))
+{
+var temp = this.textos[i].split("|");
+this.pergs_20.push(temp[0]);
+for (troca_linha = 0; troca_linha < this.dados_20.length; troca_linha++)
+{
+var temp_string = this.dados_20[troca_linha].split(":");
+temp[1] = temp[1].replace("☻" + temp_string[0] + "☻", temp_string[1]);
+}
+this.resps_20.push(temp[1]);}
+}
+//myImage.src = objectURL;
+});
+});
+
+	function addText(vindo)
+	{
+		perguntaTexto="aa";
+		if(vindo=="4455AA")
+		{
+			perguntaTexto = $('#pergunta').val();
+		}
+		else
+		{
+			perguntaTexto=vindo;
+		}
+		console.log(this.resps.length);
+		console.log(this.resps);
+		
+		var achou=0;
+		var compr=this.resps.length;
+		if(produtoAtivo!="")
+		{
+			if(perguntaTexto.toLowerCase()=="Produto Allora".toLowerCase())
+			{
+				produtoAtivo="Allora";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Allora como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_1;
+				this.resps=this.resps_1;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Cagel".toLowerCase())
+			{
+				produtoAtivo="Cagel";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Cagel como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_2;
+				this.resps=this.resps_2;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Caladryl Creme".toLowerCase())
+			{
+				produtoAtivo="Caladryl Creme";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Caladryl Creme como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_3;
+				this.resps=this.resps_3;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Caladryl Loção".toLowerCase())
+			{
+				produtoAtivo="Caladryl Loção";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Caladryl Loção como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_4;
+				this.resps=this.resps_4;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Banho Aero Classic".toLowerCase())
+			{
+				produtoAtivo="Banho Aero Classic";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Banho Aero Classic como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_5;
+				this.resps=this.resps_5;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Banho Aero Ocean".toLowerCase())
+			{
+				produtoAtivo="Banho Aero Ocean";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Banho Aero Ocean como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_6;
+				this.resps=this.resps_6;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Banho Aero Sem Perfume".toLowerCase())
+			{
+				produtoAtivo="Banho Aero Sem Perfume";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Banho Aero Sem Perfume como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_7;
+				this.resps=this.resps_7;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Banho Roll Sem Perfume".toLowerCase())
+			{
+				produtoAtivo="Banho Roll Sem Perfume";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Banho Roll Sem Perfume como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_8;
+				this.resps=this.resps_8;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Banho Roll Classic".toLowerCase())
+			{
+				produtoAtivo="Banho Roll Classic";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Banho Roll Classic como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_9;
+				this.resps=this.resps_9;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Banho Roll Ocean".toLowerCase())
+			{
+				produtoAtivo="Banho Roll Ocean";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Banho Roll Ocean como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_10;
+				this.resps=this.resps_10;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Footner Calos".toLowerCase())
+			{
+				produtoAtivo="Footner Calos";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Footner Calos como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_11;
+				this.resps=this.resps_11;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Footner Mao".toLowerCase())
+			{
+				produtoAtivo="Footner Mao";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Footner Mao como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_12;
+				this.resps=this.resps_12;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Footner Ros".toLowerCase())
+			{
+				produtoAtivo="Footner Ros";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Footner Ros como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_13;
+				this.resps=this.resps_13;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Footner Creme".toLowerCase())
+			{
+				produtoAtivo="Footner Creme";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Footner Creme como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_14;
+				this.resps=this.resps_14;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Footner CCC".toLowerCase())
+			{
+				produtoAtivo="Footner CCC";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Footner CCC como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_15;
+				this.resps=this.resps_15;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Footner Esp".toLowerCase())
+			{
+				produtoAtivo="Footner Esp";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Footner Esp como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_16;
+				this.resps=this.resps_16;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Footner AE".toLowerCase())
+			{
+				produtoAtivo="Footner AE";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Footner AE como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_17;
+				this.resps=this.resps_17;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Footner Meia".toLowerCase())
+			{
+				produtoAtivo="Footner Meia";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Footner Meia como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_18;
+				this.resps=this.resps_18;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Kinerase Creme".toLowerCase())
+			{
+				produtoAtivo="Kinerase Creme";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Kinerase Creme como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_19;
+				this.resps=this.resps_19;
+				achou=1;
+			}
+			else if(perguntaTexto.toLowerCase()=="Produto Kinerase Loção".toLowerCase())
+			{
+				produtoAtivo="Kinerase Loção";
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(perguntaTexto);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Você definiu Kinerase Loção como produto ativo");
+				intCount=intCount+1;
+				this.pergs=this.pergs_20;
+				this.resps=this.resps_20;
+				achou=1;
+			}
+			if(achou!=1)
+			{
+				for (i = 0; i < compr; i++) 
+				{
+					if(this.pergs[i].toLowerCase()==perguntaTexto.toLowerCase())
+					{
+							var template = $('#hidden-template').html();
+							$('#vrau').append(template);
+							$('#texto').attr("id","textoPerg"+intCount);
+							$('#textoPerg'+intCount).text(this.pergs[i]+" ");
+							$('#textoResp').attr("id","textoResp"+intCount);
+							$('#textoResp'+intCount).text(this.resps[i]+" ");
+							playVibrate(this.resps[i]);
+							intCount=intCount+1;
+							achou=1;
+					}
+				}
+			}
+			if(achou==0)
+			{
+				var template = $('#hidden-template').html();
+				$('#vrau').append(template);
+				$('#texto').attr("id","textoPerg"+intCount);
+				$('#textoPerg'+intCount).text(vindo);
+				$('#textoResp').attr("id","textoResp"+intCount);
+				$('#textoResp'+intCount).text("Comando não encontrado");
+				playVibrate("Comando não encontrado");
+				intCount=intCount+1;
+			}
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Allora".toLowerCase())
+		{
+			produtoAtivo="Allora";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Allora como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_1;
+			this.resps=this.resps_1;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Cagel".toLowerCase())
+		{
+			produtoAtivo="Cagel";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Cagel como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_2;
+			this.resps=this.resps_2;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Caladryl Creme".toLowerCase())
+		{
+			produtoAtivo="Caladryl Creme";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Caladryl Creme como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_3;
+			this.resps=this.resps_3;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Caladryl Loção".toLowerCase())
+		{
+			produtoAtivo="Caladryl Loção";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Caladryl Loção como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_4;
+			this.resps=this.resps_4;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Banho Aero Classic".toLowerCase())
+		{
+			produtoAtivo="Banho Aero Classic";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Banho Aero Classic como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_5;
+			this.resps=this.resps_5;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Banho Aero Ocean".toLowerCase())
+		{
+			produtoAtivo="Banho Aero Ocean";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Banho Aero Ocean como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_6;
+			this.resps=this.resps_6;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Banho Aero Sem Perfume".toLowerCase())
+		{
+			produtoAtivo="Banho Aero Sem Perfume";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Banho Aero Sem Perfume como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_7;
+			this.resps=this.resps_7;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Banho Roll Sem Perfume".toLowerCase())
+		{
+			produtoAtivo="Banho Roll Sem Perfume";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Banho Roll Sem Perfume como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_8;
+			this.resps=this.resps_8;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Banho Roll Classic".toLowerCase())
+		{
+			produtoAtivo="Banho Roll Classic";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Banho Roll Classic como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_9;
+			this.resps=this.resps_9;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Banho Roll Ocean".toLowerCase())
+		{
+			produtoAtivo="Banho Roll Ocean";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Banho Roll Ocean como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_10;
+			this.resps=this.resps_10;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Footner Calos".toLowerCase())
+		{
+			produtoAtivo="Footner Calos";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Footner Calos como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_11;
+			this.resps=this.resps_11;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Footner Mao".toLowerCase())
+		{
+			produtoAtivo="Footner Mao";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Footner Mao como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_12;
+			this.resps=this.resps_12;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Footner Ros".toLowerCase())
+		{
+			produtoAtivo="Footner Ros";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Footner Ros como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_13;
+			this.resps=this.resps_13;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Footner Creme".toLowerCase())
+		{
+			produtoAtivo="Footner Creme";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Footner Creme como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_14;
+			this.resps=this.resps_14;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Footner CCC".toLowerCase())
+		{
+			produtoAtivo="Footner CCC";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Footner CCC como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_15;
+			this.resps=this.resps_15;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Footner Esp".toLowerCase())
+		{
+			produtoAtivo="Footner Esp";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Footner Esp como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_16;
+			this.resps=this.resps_16;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Footner AE".toLowerCase())
+		{
+			produtoAtivo="Footner AE";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Footner AE como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_17;
+			this.resps=this.resps_17;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Footner Meia".toLowerCase())
+		{
+			produtoAtivo="Footner Meia";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Footner Meia como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_18;
+			this.resps=this.resps_18;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Kinerase Creme".toLowerCase())
+		{
+			produtoAtivo="Kinerase Creme";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Kinerase Creme como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_19;
+			this.resps=this.resps_19;
+		}
+		else if(perguntaTexto.toLowerCase()=="Produto Kinerase Loção".toLowerCase())
+		{
+			produtoAtivo="Kinerase Loção";
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("Você definiu Kinerase Loção como produto ativo");
+			intCount=intCount+1;
+			this.pergs=this.pergs_20;
+			this.resps=this.resps_20;
+		}
+		else
+		{
+			var template = $('#hidden-template').html();
+			$('#vrau').append(template);
+			$('#texto').attr("id","textoPerg"+intCount);
+			$('#textoPerg'+intCount).text(perguntaTexto);
+			$('#textoResp').attr("id","textoResp"+intCount);
+			$('#textoResp'+intCount).text("É necesário selecionar um produto. Tente Produto + nome do produto");
+			intCount=intCount+1;
+		}
+		var objDiv = document.getElementById("vrau");
+		objDiv.scrollTop = objDiv.scrollHeight;
+		//$("#vrau").animate({ scrollTop: $("#vrau").height()});
+	}
+	function voiceToText()
+	{
+		if(ouvindo==false)
+		{
+		ouvindo=true;
+		 document.addEventListener("deviceready", function() {
+
+		 
+		 function startRecognition(){
+		window.plugins.speechRecognition.startListening(function(result){
+			// Show results in the console
+			//alert("1"+result);
+			//for(var countForTexto)
+			//
+				
+			//}
+			//alert(result[0]);
+			addText(result[0]);
+			ouvindo=false;
+			//console.log("1"+result);
+			
+		}, function(err){
+			//alert("2"+err);
+			//console.log("2"+err);
+		}, {
+			language: "pt-BR",
+			showPopup: true
+		});
+	}
+
+	// Verify if recognition is available
+	window.plugins.speechRecognition.isRecognitionAvailable(function(available){
+		if(!available){
+			alert("Sistema de Voz indisponivel nesse celular");
+			//console.log("Indisponibru");
+		}
+
+		// Check if has permission to use the microphone
+		window.plugins.speechRecognition.hasPermission(function (isGranted){
+			if(isGranted){
+			//alert("OOOO");
+			//console.log("000000");
+				startRecognition();
+			}else{
+				// Request the permission
+				window.plugins.speechRecognition.requestPermission(function (){
+					// Request accepted, start recognition
+					//alert("OOOO");
+					//console.log("000000");
+					//startRecognition();
+				}, function (err){
+					//alert("3"+err);
+					//console.log("3"+err);
+				});
+			}
+		}, function(err){
+			//alert("4"+err);
+			//console.log("4"+err);
+		});
+	}, function(err){
+		//alert("5"+err);
+		//console.log("5"+err);
+	});
+		 
+		 
+		 
+		 
+		 
+	}, false);
+		}
+	}
+	 function playVibrate(textoVozFala) {
+    var u = new SpeechSynthesisUtterance();
+    u.text = textoVozFala;
+    u.lang = 'pt-BR';
+    speechSynthesis.speak(u);      
+  }
+
+	</script>
+</html>
